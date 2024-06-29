@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post('/register', async (req, res) => {
     try {
-
+        const {username, password, roll, grade} = req.body;
     } catch(err) {
-        return res.json((message:))
+        return res.json({message: "Error in registering student"})
     }
 })
