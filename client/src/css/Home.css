@@ -1,37 +1,184 @@
-/* Hero.css*/
+/* Importing Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-.hero{
+/* Overall Hero Section */
+.hero {
     display: flex;
-    background-color: #301934;
-    color: #ffc107;
+    background-color: #ffffff;
+    color: #333333;
     height: 92vh;
     padding-inline: 30px;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* Hero Content Section */
 .hero-content {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center; /* Center align content */
     padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
-.hero-text{
+/* Text Styling */
+.hero-text {
     font-size: 3rem;
     margin-bottom: 10px;
-    word-spacing: 1%;
+    word-spacing: 2px;
+    animation: slideInLeft 1.5s ease-in-out;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.hero-description{
+.hero-description {
     font-size: 1.2rem;
-    max-width: 400px;
+    max-width: 500px;
     margin-bottom: 20px;
-
+    animation: slideInRight 1.5s ease-in-out;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Hero Image Section */
 .hero-image {
     flex: 1;
-    background: url('Images/homepag1.jpg') center;
-    background-size: 90%;
-    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('Images/books3.webp') center;
+    background-size: cover;
+    opacity: 0.9; /* Adjust opacity for blending effect */
+    z-index: -1; /* Behind other content */
+    filter: brightness(110%); /* Make the image brighter */
+    animation: fadeInImage 2s ease-in-out; /* Fade-in animation for the image */
+}
+
+/* Graphic Elements */
+.hero:before, .hero:after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 165, 0, 0.3);
+    opacity: 0.6;
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out, bounceIn 1.5s ease-in-out;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+    z-index: 3;
+}
+
+.hero:before {
+    top: 20%;
+    left: -5%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 1s, 0.5s;
+}
+
+.hero:after {
+    bottom: 10%;
+    right: -10%;
+    width: 120px;
+    height: 120px;
+    animation-delay: 2s, 1s;
+}
+
+/* Adding Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes fadeInImage {
+    0% { opacity: 0; }
+    100% { opacity: 0.9; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(.9, .9, .9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(.97, .97, .97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+/* Bouncing Books Animation */
+.book {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #3498db; /* Book color */
+    border-radius: 8px;
+    animation: bounceBook 3s ease-in-out infinite alternate;
+}
+
+.book:nth-child(2) {
+    top: 20%;
+    left: 15%;
+}
+
+.book:nth-child(3) {
+    top: 60%;
+    left: 10%;
+}
+
+.book:nth-child(4) {
+    top: 40%;
+    right: 10%;
+}
+
+.book:nth-child(5) {
+    bottom: 15%;
+    left: 30%;
+}
+
+/* Bounce Animation for Books */
+@keyframes bounceBook {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
 }

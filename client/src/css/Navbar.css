@@ -1,29 +1,36 @@
-/*Navbar.css*/
-    {
+/* Reset CSS */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* Navbar Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 12px;
-    background-color: #1e1934;
-    color: #fff;
-    padding-inline: 45px;
-    border-bottom: 1px solid rgb(175, 68, 175);
-}
-
-.navbar-left {
-    display: flex;
     align-items: center;
+    padding: 12px 45px;
+    background-color: #2980b9; /* Updated background color */
+    color: #ecf0f1; /* Updated text color */
+    border-bottom: 2px solid #3498db; /* Updated border color */
+    transition: background-color 0.3s ease-in-out;
 }
 
-.navbar-brand{
-    font-size: 1.8rem;
-    margin-right: 20px ;
+.navbar:hover {
+    background-color: #34495e; /* Darker shade on hover */
+}
+
+.navbar-brand {
+    font-size: 2rem; /* Increased font size */
     text-decoration: none;
-    color: #fff;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif; /* Updated font family */
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+    color: #e67e22; /* Accent color on hover */
 }
 
 .navbar-right {
@@ -32,11 +39,38 @@
 }
 
 .navbar-link {
-    color: #fff;
+    color: #ecf0f1;
     text-decoration: none;
     margin-left: 20px;
+    font-family: 'Roboto', sans-serif; /* Updated font family */
+    transition: color 0.3s ease-in-out;
+    position: relative; /* Added for animated underline */
 }
 
-.navbar-link:hover{
+.navbar-link:hover {
+    color: #e67e22; /* Accent color on hover */
     text-decoration: underline;
+    transform: translateY(-2px); /* Added animation on hover */
+}
+
+/* Animated Underline Effect */
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Adjust as needed */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #e67e22; /* Accent color */
+    transition: width 0.3s ease-in-out;
+    transform-origin: bottom right;
+}
+
+.navbar-link:hover::after {
+    width: 0%; /* Change to 100% to reverse animation */
+}
+
+/* Animation on Hover */
+.navbar-link:hover {
+    transform: translateY(-4px); /* Increased hover animation */
 }
