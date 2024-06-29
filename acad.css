@@ -1,0 +1,15 @@
+.branch{
+    display: flex;
+  justify-content: center; /* Center images horizontally */
+  gap: 40px; 
+  color: aliceblue;
+}
+.head{
+    text-align: center;
+    color:cornsilk;
+}
+
+body{
+    background-color: #301934;
+    
+}
