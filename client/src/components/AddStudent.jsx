@@ -6,12 +6,13 @@ import axios from 'axios'
 const AddStudent = () => {
     const [roll, setRoll] = useState('')
     const [username,setUsername] = useState('')
-    const [grade,setGrade] = useState('')
+    const [batch,setBatch] = useState('')
+    const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001',{roll, username, password, grade})
+        axios.post('http://localhost:3001/student/register',{roll,email, username, batch, password,})
         .then(res => { console.log(res)
         })
         .catch(err => console.log(err))
@@ -31,7 +32,7 @@ const AddStudent = () => {
                 <div className="form-group">
                     <label htmlFor='email'>Email:</label>
                     <input type="text" id="email" name="email"
-                    onChange={(e) => setRoll(e.target.value)}/>
+                    onChange={(e) => setEmail(e.target.value)}/>
                 
                 </div>
                 <div className="form-group">
