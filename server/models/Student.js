@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
 
-    roll: {type: String}
-    grade: {type: String}
+    roll: {type: String},
+    email: {type:String},
+    batch: {type:String},
     username: {type:String, required: true, unique: true},
     password: {type: String, required: true}
 })

@@ -1,25 +1,27 @@
 .student-form-container {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
-    background-color: #422238;
+    background-color: #b0e0e6; /* Light blue background color */
 }
 
-.student-form{
-    background-color: rgba(255, 255, 255, 0.7);
+.student-form {
+    background-color: rgba(255, 255, 255, 0.9); /* Increased opacity for better visibility */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Slightly increased shadow */
     padding: 20px;
     width: 300px;
 }
 
-.student-form h2{
+.student-form h2 {
     margin-bottom: 20px;
     text-align: center;
+    color: #45af50; /* Green color for the heading */
+    font-family: 'Roboto', sans-serif; /* Changed font for the heading */
 }
 
 .student-form .form-group {
@@ -31,28 +33,34 @@
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #333; /* Darker color for labels */
 }
 
 .student-form .form-group input,
 .student-form .form-group select {
     width: 100%;
-    padding: 8px;
+    padding: 10px; /* Increased padding for better input field appearance */
     box-sizing: border-box;
     margin-top: 5px;
+    border: 1px solid #ccc; /* Added border for input fields */
+    border-radius: 4px; /* Rounded corners */
+    font-family: 'Arial', sans-serif; /* Consistent font */
 }
 
 .student-form .submit {
     background-color: #45af50;
     color: #fff;
-    padding: 10px;
+    padding: 12px; /* Larger padding for the button */
     width: 100%;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 8px;
+    margin-top: 12px; /* Increased margin for button separation */
+    font-family: 'Roboto', sans-serif; /* Changed font for the button */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
 .student-form .submit:hover {
-    background-color: aquamarine;
+    background-color: #3ca03c; /* Darker green on hover */
 }

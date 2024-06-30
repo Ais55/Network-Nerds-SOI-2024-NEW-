@@ -20,11 +20,17 @@ const AddStudent = () => {
 
     return (
         <div className="student-form-container">
-            <form className="student-form" onSubmit={handleSubmit}>
-                <h2>Add Student</h2>
+            <div className="student-form" >
+                <h2>Add Student</h2> <br />
                 <div className="form-group">
                     <label htmlFor='roll'>Roll No:</label>
                     <input type="text" id="roll" name="roll"
+                    onChange={(e) => setRoll(e.target.value)}/>
+                
+                </div>
+                <div className="form-group">
+                    <label htmlFor='email'>Email:</label>
+                    <input type="text" id="email" name="email"
                     onChange={(e) => setRoll(e.target.value)}/>
                 
                 </div>
@@ -34,18 +40,18 @@ const AddStudent = () => {
                     onChange={(e) => setUsername(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="grade">Grade:</label>
-                    <input type="text" id="grade" name="grade"
-                    onChange={(e) => setGrade(e.target.value)} />
+                    <label htmlFor="batch">Batch:</label>
+                    <input type="text" id="batch" name="batch"
+                    onChange={(e) => setBatch(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>
-                    <input type="text" id="password" name="password"
+                    <input type="password" id="password" name="password"
                     onChange={(e) => setPassword(e.target.value)}/>
                 </div>
  
-                <button type="submit" onClick={handleSubmit}>Register</button>
-            </form>
+                <button className="submit" onClick={handleSubmit}>Register</button>
+            </div>
         </div>
     )
 }

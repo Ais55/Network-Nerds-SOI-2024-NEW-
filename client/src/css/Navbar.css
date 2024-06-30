@@ -22,10 +22,10 @@
 }
 
 .navbar-brand {
-    font-size: 2rem; /* Increased font size */
+    font-size: 3rem; /* Increased font size */
     text-decoration: none;
     color: #ecf0f1;
-    font-family: 'Roboto', sans-serif; /* Updated font family */
+    font-family: 'Inconsolata', monospace; /* Updated font family */
     transition: color 0.3s ease-in-out;
 }
 
@@ -42,7 +42,7 @@
     color: #ecf0f1;
     text-decoration: none;
     margin-left: 20px;
-    font-family: 'Roboto', sans-serif; /* Updated font family */
+    font-family: 'Inconsolata', monospace;/* Updated font family */
     transition: color 0.3s ease-in-out;
     position: relative; /* Added for animated underline */
 }

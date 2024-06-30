@@ -46,7 +46,9 @@ const Login = () => {
                     </select>
                 </div>
                 <button className='btn-login' onClick={handleSubmit}>Login</button>
+            
             </div>
+            <div className="login-image"></div>
         </div>
     )
 }
