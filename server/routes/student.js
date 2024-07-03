@@ -1,9 +1,10 @@
 import express from 'express'
-import {Student } from '../models/Student.js';
+import { Student } from '../models/Student.js';
 import bcrypt from 'bcrypt'
 const router = express.Router();
+import { verifyAdmin } from './auth.js';
 
-router.post('/register', async (req, res) => {
+router.post('/register', verifyAdmin, async (req, res) => {
     try {
         const {username, password, roll, batch, email} = req.body;
         const student = await Student.findOne({username})
