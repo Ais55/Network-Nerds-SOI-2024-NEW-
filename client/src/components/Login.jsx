@@ -1,27 +1,30 @@
-import React, { useState } from "react"
-import {useNavigate} from 'react-router-dom'
-import '../css/Login.css'
-import axios from 'axios'
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import '../css/Login.css';
+import axios from 'axios';
 
-
-const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password,setPassword] = useState('')
-    const [role,setRole] = useState('admin')
-    const navigate = useNavigate()
+const Login = ({ setRoleVar }) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [role, setRole] = useState('admin');
+    const navigate = useNavigate();
 
     axios.defaults.withCredentials = true;
 
     const handleSubmit = () => {
-        axios.post('http://localhost:3001/auth/login',{username, password, role})
-        .then(res => {
-            if(res.data.login && res.data.role === 'admin'){
-                navigate('/dashboard')
-            }
-            console.log(res)
-        })
-        .catch(err => console.log(err))
-       
+        axios.post('http://localhost:3001/auth/login', { username, password, role })
+            .then(res => {
+                if (res.data.login && res.data.role === 'admin') {
+                    setRole('admin');
+                    navigate('/dashboard');
+                } 
+                else if (res.data.login && res.data.role === 'student') {
+                    setRole('student');
+                    navigate('/');
+                }
+                console.log(res);
+            })
+            .catch(err => console.log(err));
     }
 
     return (
@@ -31,27 +34,26 @@ const Login = () => {
                 <div className="form-group">
                     <label htmlFor="username">Username:</label>
                     <input type="text" placeholder="Enter Username"
-                    onChange={(e) => setUsername(e.target.value)} />
+                        onChange={(e) => setUsername(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>
                     <input type="password" placeholder="Enter Password"
-                     onChange={(e) => setPassword(e.target.value)}/>
+                        onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="role">Role:</label>
                     <select name="role" id="role"
-                     onChange={(e) => setRole(e.target.value)}>
-                        <option value = 'admin'>Admin</option>
-                        <option value = 'student'>Student</option>
+                        onChange={(e) => setRole(e.target.value)}>
+                        <option value='admin'>Admin</option>
+                        <option value='student'>Student</option>
                     </select>
                 </div>
                 <button className='btn-login' onClick={handleSubmit}>Login</button>
-            
             </div>
             <div className="login-image"></div>
         </div>
-    )
+    );
 }
 
-export default Login
+export default Login;

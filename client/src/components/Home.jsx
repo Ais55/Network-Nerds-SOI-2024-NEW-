@@ -1,6 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import '../css/Home.css'
-const Home = () => {
+import axios from "axios"
+
+const Home = ({setRole}) => {
+    useEffect(() => {
+        axios.get('/verify')
+        .then(res => {
+            if(res.data.login) {
+                setRole(res.data)
+            }
+        }).catch(err => console.log(err))
+    }, [])
     return (
         <div className="hero">
             <div className="hero-content">
