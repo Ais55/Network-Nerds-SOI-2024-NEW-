@@ -1,0 +1,70 @@
+/* AddBook.css */
+
+.book-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+.book-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Smaller max-width */
+}
+
+.book-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px; /* Smaller font size */
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.form-group label {
+    width: 30%; /* Adjusted width for labels */
+    font-weight: bold;
+    color: #555;
+    font-size: 14px; /* Smaller font size */
+    margin-right: 10px;
+}
+
+.form-group input {
+    width: 70%; /* Adjusted width for input fields */
+    padding: 8px; /* Slightly smaller padding */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-size: 14px; /* Smaller font size */
+}
+
+.form-group input:focus {
+    border-color: #007bff; /* Blue color for focus */
+    outline: none;
+}
+
+.submit {
+    width: 100%;
+    padding: 10px 0;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit:hover {
+    background: #0056b3;
+}

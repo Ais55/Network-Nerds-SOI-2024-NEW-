@@ -6,6 +6,7 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import AddStudent from './components/AddStudent'
 import Logout from './components/Logout'
+import AddBook from './components/AddBook'
 import { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
@@ -35,6 +36,7 @@ function App(){
             <Route path='/dashboard' element={<Dashboard />}></Route>
             <Route path='/addstudent' element={<AddStudent />}></Route>
             <Route path='/logout' element={<Logout setRole = {setRole} />}></Route>
+            <Route path='/addbook' element={<AddBook />}></Route>
         </Routes>
         </BrowserRouter>
     )
