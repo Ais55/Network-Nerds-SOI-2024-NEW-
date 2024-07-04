@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import '../css/Login.css';
 import axios from 'axios';
 
-const Login = ({ setRoleVar }) => {
+const Login = ({ setRole }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('admin');
+    const [role, setRoleVar] = useState('admin');
     const navigate = useNavigate();
 
     axios.defaults.withCredentials = true;
@@ -44,7 +44,7 @@ const Login = ({ setRoleVar }) => {
                 <div className="form-group">
                     <label htmlFor="role">Role:</label>
                     <select name="role" id="role"
-                        onChange={(e) => setRole(e.target.value)}>
+                        onChange={(e) => setRoleVar(e.target.value)}>
                         <option value='admin'>Admin</option>
                         <option value='student'>Student</option>
                     </select>

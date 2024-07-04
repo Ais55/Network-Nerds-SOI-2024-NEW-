@@ -1,20 +1,78 @@
-/* dashboard.css */
+/* Dashboard.css */
 
-.navbar {
-    background-color: #f8f9fa; /* Light grey background */
-    padding: 10px 20px;
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+.dashboard {
     display: flex;
-    justify-content: space-around; /* Space links evenly */
-    border-bottom: 2px solid #ddd; /* Light border at the bottom */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-image: url('https://example.com/path-to-your-image.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
 }
 
-.navbar-link {
-    text-decoration: none;
-    color: #007bff; /* Bootstrap primary blue */
-    font-weight: bold;
+.db-content {
+    background: rgba(255, 255, 255, 0.8); /* White background with transparency */
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease-in-out;
 }
 
-.navbar-link:hover {
-    text-decoration: underline;
-    color: #0056b3; /* Darker blue on hover */
+.db-text {
+    font-size: 3em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.db-description {
+    font-size: 1.5em;
+    font-weight: 300;
+    color: #666;
+}
+
+.db-image {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    background: url('Images/books4.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    animation: rotate 20s infinite linear;
+}
+
+.db1-image {
+    margin-top: 40px; /* Adjust margin as needed */
+    width: 400px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+    background: url('Images/books5.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 30px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotateReverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
 }
