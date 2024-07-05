@@ -19,7 +19,7 @@ router.post('/add', verifyAdmin, async (req, res) => {
             image_url} = req.body;
         
         const newbook = new Book({
-            bookid: book_id, 
+            book_id: book_id, 
             title: title, 
             description: description, 
             author: author, 

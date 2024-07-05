@@ -1,5 +1,12 @@
 import React from "react";
 import '../css/BookCard.css'
+function trimming(description, maxLength = 20) {
+    if (description.length > maxLength) {
+      return description.substring(0, maxLength) + '...';
+    }
+    return description;
+  }
+  
 
 const BookCard = ({book}) => {
     const{ 
@@ -21,12 +28,12 @@ const BookCard = ({book}) => {
             <img src={image_url} alt={title} className="book-image"/>
             <div className="book-details">
                 <h3>{book_id}</h3>
-                <h3>{title}</h3>
-                <h4>{description}</h4>
+                <h3>{trimming(title,55)}</h3>
+                <h4>{trimming(description, 70)}</h4>
                 <p>Author: {author}</p>
                 <p>Department : {department}</p>
                 <p>count : {count}</p>
-                <p>Issued Books : {issued_books}</p>
+                <p>Issued  : {issued_books}</p>
             </div>
             <div className="book-actions">
                 <button>Edit</button>
