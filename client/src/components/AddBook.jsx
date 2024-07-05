@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import  "../css/AddBook.css";
 
 const AddBook = () => {
+    const [book_id, setBook_id] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [author, setAuthor] = useState('');
@@ -14,11 +15,13 @@ const AddBook = () => {
     const [vendor_id, setVendor_id] = useState('');
     const [publisher, setPublisher] = useState('');
     const [publisher_id, setPublisher_id] = useState('');
+    const [image_url, setImage_url] = useState('');
     const navigate = useNavigate();
     
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:3001/book/add', {
+            book_id,
             title,
             description,
             author,
@@ -28,7 +31,8 @@ const AddBook = () => {
             vendor,
             vendor_id,
             publisher,
-            publisher_id
+            publisher_id,
+            image_url
         })
         .then(res => { 
             console.log(res);
@@ -44,6 +48,11 @@ const AddBook = () => {
             <div className="book-form">
                 <h2>Add Book</h2>
                 <br />
+                <div className="form-group">
+                    <label htmlFor='book_id'>Book ID:</label>
+                    <input type="text" id="book_id" name="book_id"
+                    onChange={(e) => setBook_id(e.target.value)}/>
+                </div>
                 <div className="form-group">
                     <label htmlFor='title'>Title:</label>
                     <input type="text" id="title" name="title"
@@ -71,7 +80,7 @@ const AddBook = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="count">Count:</label>
-                    <input type="text" id="count" name="count"
+                    <input type="number" id="count" name="count"
                     onChange={(e) => setCount(e.target.value)}/>
                 </div>
                 <div className="form-group">
@@ -93,6 +102,11 @@ const AddBook = () => {
                     <label htmlFor="publisher_id">Publisher ID:</label>
                     <input type="text" id="publisher_id" name="publisher_id"
                     onChange={(e) => setPublisher_id(e.target.value)}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="image_url">Image url:</label>
+                    <input type="text" id="image_url" name="image_url"
+                    onChange={(e) => setImage_url(e.target.value)}/>
                 </div>
                 <button className="submit" onClick={handleSubmit}>Add</button>
             </div>
