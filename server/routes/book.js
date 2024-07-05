@@ -23,7 +23,7 @@ router.post('/add', verifyAdmin, async (req, res) => {
             title: title, 
             description: description, 
             author: author, 
-            deaprtment: department, 
+            department: department, 
             count: count, 
             vendor: vendor, 
             vendor_id: vendor_id, 
@@ -35,6 +35,16 @@ router.post('/add', verifyAdmin, async (req, res) => {
         return res.json({added: true})
     } catch(err) {
         return res.json({message: "Error in adding Book"})
+    }
+})
+
+router.get('/books', async (req, res) => {
+    try {
+        const books = await Book.find()
+        return res.json(books)
+
+    } catch(err) {
+        return res.json(err)
     }
 })
 

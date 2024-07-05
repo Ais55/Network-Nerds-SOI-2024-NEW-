@@ -35,9 +35,11 @@ const AddBook = () => {
             image_url
         })
         .then(res => { 
-            console.log(res);
-            if(res.data.registered) {
-                navigate('/dashboard');
+            if(res.data.added) {
+                navigate('/books');
+            }
+            else {
+                console.log(res);
             }
         })
         .catch(err => console.log(err));
