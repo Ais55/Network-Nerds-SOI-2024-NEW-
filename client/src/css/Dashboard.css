@@ -26,21 +26,25 @@ body {
 
 .db-content {
     background: rgba(255, 255, 255, 0.8); /* White background with transparency */
-    padding: 20px 40px;
+    padding: 15px 30px; /* Adjusted padding */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     animation: fadeIn 2s ease-in-out;
+    max-width: 500px; /* Increased max-width for wider card */
+    margin: 20px; /* Adjust margin as needed */
+    height: auto; /* Set height to auto to adjust based on content */
 }
 
 .db-text {
-    font-size: 3em;
+    font-size: 2.4rem; /* Adjusted font size */
     font-weight: 700;
-    color: #333;
+    color: #132872;
     margin-bottom: 10px;
+    line-height: 1.2; /* Adjusted line height */
 }
 
 .db-description {
-    font-size: 1.5em;
+    font-size: 1.5em; /* Adjusted font size */
     font-weight: 300;
     color: #666;
 }

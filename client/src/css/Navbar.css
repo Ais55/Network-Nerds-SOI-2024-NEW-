@@ -1,36 +1,29 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 /* Navbar Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 45px;
-    background-color: #2980b9; /* Updated background color */
-    color: #ecf0f1; /* Updated text color */
-    border-bottom: 2px solid #3498db; /* Updated border color */
+    background-color: #2980b9;
+    color: #ecf0f1;
+    border-bottom: 2px solid #3498db;
     transition: background-color 0.3s ease-in-out;
 }
 
 .navbar:hover {
-    background-color: #34495e; /* Darker shade on hover */
+    background-color: #34495e;
 }
 
 .navbar-brand {
-    font-size: 3rem; /* Increased font size */
+    font-size: 3rem;
     text-decoration: none;
     color: #ecf0f1;
-    font-family: 'Inconsolata', monospace; /* Updated font family */
+    font-family: 'Inconsolata', monospace;
     transition: color 0.3s ease-in-out;
 }
 
 .navbar-brand:hover {
-    color: #e67e22; /* Accent color on hover */
+    color: #e67e22;
 }
 
 .navbar-right {
@@ -42,35 +35,67 @@
     color: #ecf0f1;
     text-decoration: none;
     margin-left: 20px;
-    font-family: 'Inconsolata', monospace;/* Updated font family */
+    font-family: 'Inconsolata', monospace;
     transition: color 0.3s ease-in-out;
-    position: relative; /* Added for animated underline */
+    position: relative;
 }
 
 .navbar-link:hover {
-    color: #e67e22; /* Accent color on hover */
+    color: #e67e22;
     text-decoration: underline;
-    transform: translateY(-2px); /* Added animation on hover */
+    transform: translateY(-2px);
 }
 
 /* Animated Underline Effect */
 .navbar-link::after {
     content: '';
     position: absolute;
-    bottom: -2px; /* Adjust as needed */
+    bottom: -2px;
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #e67e22; /* Accent color */
+    background-color: #e67e22;
     transition: width 0.3s ease-in-out;
     transform-origin: bottom right;
 }
 
 .navbar-link:hover::after {
-    width: 0%; /* Change to 100% to reverse animation */
+    width: 0%;
 }
 
 /* Animation on Hover */
 .navbar-link:hover {
-    transform: translateY(-4px); /* Increased hover animation */
+    transform: translateY(-4px);
+}
+
+.navbar-search-form {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Adjust margin as needed */
+}
+
+.navbar-search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px; /* Adjust margin as needed */
+    font-family: 'Inconsolata', monospace;
+}
+
+.navbar-search-button {
+    padding: 8px 16px;
+    background-color: #e67e22;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-search-button:hover {
+    background-color: #d35400;
+}
+
+.navbar-links {
+    margin-left: auto; /* Pushes the login/logout link to the right */
 }

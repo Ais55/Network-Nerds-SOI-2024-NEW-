@@ -29,12 +29,10 @@ const Dashboard = () => {
                 <div className="db-books">
                     <h2>Total Book Types</h2>
                     <h2>{books}</h2>
-                    <br />
                 </div>
                 <div className="db-students">
                     <h2>Total Students</h2>
                     <h2>{students}</h2>
-                    <br />
                 </div>
                 <div className="db-admins">
                     <h2>Total Admins</h2>
