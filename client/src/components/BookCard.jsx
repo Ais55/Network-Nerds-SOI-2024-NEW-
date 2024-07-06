@@ -1,3 +1,4 @@
+//Delete BookCard.jsx
 import React from "react";
 import '../css/BookCard.css'
 import { Link } from 'react-router-dom';
@@ -42,7 +43,7 @@ const BookCard = ({book}) => {
                 <Link to={`/book/${book._id}`} className="action-link">
                     <button className="action-button edit-button">Edit</button>
                 </Link>
-                <Link to={`/book/${book._id}`} className="action-link">
+                <Link to={`/delete/${book._id}`} className="action-link">
                     <button className="action-button delete-button">Delete</button>
                 </Link>
             </div>
