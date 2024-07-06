@@ -1,8 +1,10 @@
-import express from 'express'
+import express from 'express';
 import { Book } from '../models/Book.js';
-const router = express.Router();
 import { verifyAdmin } from './auth.js';
 
+const router = express.Router();
+
+// Add a new book
 router.post('/add', verifyAdmin, async (req, res) => {
     try {
         const {
@@ -16,36 +18,62 @@ router.post('/add', verifyAdmin, async (req, res) => {
             vendor_id, 
             publisher, 
             publisher_id,
-            image_url} = req.body;
+            image_url,
+            genre
+        } = req.body;
         
-        const newbook = new Book({
-            book_id: book_id, 
-            title: title, 
-            description: description, 
-            author: author, 
-            department: department, 
-            count: count, 
-            vendor: vendor, 
-            vendor_id: vendor_id, 
-            publisher: publisher, 
-            publisher_id: publisher_id,
-            image_url: image_url
-        })
-        await newbook.save()
-        return res.json({added: true})
-    } catch(err) {
-        return res.json({message: "Error in adding Book"})
+        const newBook = new Book({
+            book_id, 
+            title, 
+            description, 
+            author,
+            genre, 
+            department, 
+            count, 
+            vendor, 
+            vendor_id, 
+            publisher, 
+            publisher_id,
+            image_url
+        });
+        
+        await newBook.save();
+        return res.json({ added: true });
+    } catch (err) {
+        return res.json({ message: "Error in adding Book" });
     }
-})
+});
 
+// Get all books
 router.get('/books', async (req, res) => {
     try {
-        const books = await Book.find()
-        return res.json(books)
-
-    } catch(err) {
-        return res.json(err)
+        const books = await Book.find();
+        return res.json(books);
+    } catch (err) {
+        return res.json(err);
     }
-})
+});
 
-export {router as bookRouter}
+// Update a book by id
+router.put('/book/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const updatedBook = await Book.findByIdAndUpdate(id, req.body, { new: true });
+        return res.json({ updated: true, book: updatedBook });
+    } catch (err) {
+        return res.json(err);
+    }
+});
+
+// Get a book by id
+router.get('/book/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const book = await Book.findById(id);
+        return res.json(book);
+    } catch (err) {
+        return res.json(err);
+    }
+});
+
+export { router as bookRouter };

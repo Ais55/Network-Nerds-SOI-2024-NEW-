@@ -10,6 +10,7 @@ import AddBook from './components/AddBook'
 import { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
+import EditBook from './components/EditBook'
 
 function App(){
     const [role, setRole] = useState('')
@@ -37,6 +38,7 @@ function App(){
             <Route path='/addstudent' element={<AddStudent />}></Route>
             <Route path='/logout' element={<Logout setRole = {setRole} />}></Route>
             <Route path='/addbook' element={<AddBook />}></Route>
+            <Route path="/book/:id" element={<EditBook/>}></Route>
         </Routes>
         </BrowserRouter>
     )

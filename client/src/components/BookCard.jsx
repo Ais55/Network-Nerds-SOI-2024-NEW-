@@ -1,5 +1,7 @@
 import React from "react";
 import '../css/BookCard.css'
+import { Link } from 'react-router-dom';
+
 function trimming(description, maxLength = 20) {
     if (description.length > maxLength) {
       return description.substring(0, maxLength) + '...';
@@ -23,6 +25,7 @@ const BookCard = ({book}) => {
         publisher,
         publisher_id,
         image_url} = book;
+        console.log("-----------" +book)
     return (
         <div className = 'book-card'>
             <img src={image_url} alt={title} className="book-image"/>
@@ -36,8 +39,12 @@ const BookCard = ({book}) => {
                 <p>Issued  : {issued_books}</p>
             </div>
             <div className="book-actions">
-                <button>Edit</button>
-                <button>Delete</button>
+                <Link to={`/book/${book._id}`} className="action-link">
+                    <button className="action-button edit-button">Edit</button>
+                </Link>
+                <Link to={`/book/${book._id}`} className="action-link">
+                    <button className="action-button delete-button">Delete</button>
+                </Link>
             </div>
         </div>
     )
