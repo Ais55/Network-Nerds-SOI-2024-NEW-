@@ -16,9 +16,12 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    background-image: url('https://example.com/path-to-your-image.jpg'); /* Background image */
-    background-size: cover;
-    background-position: center;
+    background: 
+        url('Images/books10.webp') no-repeat right center, /* Right side background image */
+        url('Images/books10.webp') no-repeat left center, /* Left side background image */
+        #f0f8ff; /* Background color */
+    background-size: 30%; /* Slightly larger background image */
+    background-blend-mode: multiply; /* Blend the images with background color */
 }
 
 .db-content {
@@ -54,8 +57,8 @@ body {
 
 .db1-image {
     margin-top: 40px; /* Adjust margin as needed */
-    width: 400px; /* Adjust size as needed */
-    height: 200px; /* Adjust size as needed */
+    width: 200px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
     background: url('Images/books5.jpg') no-repeat center center;
     background-size: cover;
     border-radius: 30px;

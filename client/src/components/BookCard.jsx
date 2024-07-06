@@ -11,7 +11,7 @@ function trimming(description, maxLength = 20) {
   }
   
 
-const BookCard = ({book}) => {
+const BookCard = ({book, role}) => {
     const{ 
         book_id,
         title,
@@ -39,14 +39,22 @@ const BookCard = ({book}) => {
                 <p>count : {count}</p>
                 <p>Issued  : {issued_books}</p>
             </div>
-            <div className="book-actions">
-                <Link to={`/book/${book._id}`} className="action-link">
-                    <button className="action-button edit-button">Edit</button>
-                </Link>
-                <Link to={`/delete/${book._id}`} className="action-link">
-                    <button className="action-button delete-button">Delete</button>
-                </Link>
-            </div>
+            {role === "admin" &&
+                <div className="book-actions">
+                    <Link to={`/book/${book._id}`} className="action-link">
+                        <button className="action-button edit-button">Edit</button>
+                    </Link>
+                    <Link to={`/delete/${book._id}`} className="action-link">
+                        <button className="action-button delete-button">Delete</button>
+                    </Link>
+                </div>}
+                {role === "student" &&
+                <div className="book-issue">
+                    <Link to={`/issue/${book._id}`} className="action-link">
+                        <button className="action-button edit-button">Get Issued</button>
+                    </Link>
+                </div>}
+            
         </div>
     )
 }

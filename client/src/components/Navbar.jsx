@@ -15,6 +15,9 @@ const Navbar = ({ role }) => {
                     <Link to="/addstudent" className="navbar-link">Add Student</Link>
                     <Link to="/dashboard" className="navbar-link">Dashboard</Link>
                 </>}
+                {role === "student" && <>
+                    <Link to="/issuedbook" className="navbar-link">My books</Link>
+                </>}
                 {role === "" ? 
                     <Link to="/login" className='navbar-link'>Login</Link>
                  : 

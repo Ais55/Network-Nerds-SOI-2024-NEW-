@@ -33,7 +33,7 @@ function App(){
         <Navbar role = {role} />
         <Routes>
             <Route path='/' element={<Home  />}></Route>
-            <Route path='/books' element={<Books />}></Route>
+            <Route path='/books' element={<Books role = {role}/>}></Route>
             <Route path='/login' element={<Login setRole = {setRole} />}></Route>
             <Route path='/dashboard' element={<Dashboard />}></Route>
             <Route path='/addstudent' element={<AddStudent />}></Route>
