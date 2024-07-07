@@ -40,7 +40,7 @@ const Navbar = ({ role, onSearch }) => {
                                 <input 
                                     type="text" 
                                     className="navbar-search-input" 
-                                    placeholder="Search..." 
+                                    placeholder="Search by BookID, Title, Author, Dept.." 
                                     value={searchTerm} 
                                     onChange={handleSearchChange} 
                                 />
@@ -57,7 +57,7 @@ const Navbar = ({ role, onSearch }) => {
                                 <input 
                                     type="text" 
                                     className="navbar-search-input" 
-                                    placeholder="Search..." 
+                                    placeholder="Search by BookID, Title, Author, Dept.." 
                                     value={searchTerm} 
                                     onChange={handleSearchChange} 
                                 />

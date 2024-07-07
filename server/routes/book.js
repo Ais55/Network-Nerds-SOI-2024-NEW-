@@ -44,10 +44,24 @@ router.post('/add', verifyAdmin, async (req, res) => {
     }
 });
 
-// Get all books
+// Get all books or search by query
 router.get('/books', async (req, res) => {
+    const { search } = req.query;
     try {
-        const books = await Book.find();
+        let books;
+        if (search) {
+            const searchRegex = new RegExp(search, 'i'); // Case-insensitive search
+            books = await Book.find({
+                $or: [
+                    { title: searchRegex },
+                    { department: searchRegex },
+                    { author: searchRegex },
+                    { book_id: searchRegex }
+                ]
+            });
+        } else {
+            books = await Book.find();
+        }
         return res.json(books);
     } catch (err) {
         return res.json(err);

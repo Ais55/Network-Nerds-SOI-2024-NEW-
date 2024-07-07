@@ -7,25 +7,25 @@ const Books = ({ role, searchQuery }) => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/book/books")
-            .then(res => {
+        const fetchBooks = async () => {
+            try {
+                const res = await axios.get("http://localhost:3001/book/books", {
+                    params: { search: searchQuery }
+                });
                 setBooks(res.data);
-                console.log(res.data);
-            }).catch(err => console.log(err));
-    }, []); // Added dependency array to run useEffect only once on mount
+            } catch (err) {
+                console.log(err);
+            }
+        };
 
-    const filteredBooks = books.filter(book =>
-        book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        book.department.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        book.id.toString().includes(searchQuery) ||
-        book.author.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+        fetchBooks();
+    }, [searchQuery]); // Added searchQuery as a dependency
 
     return (
         <div className="book-list">
             {
-                filteredBooks.map(book => (
-                    <BookCard key={book.id} book={book} role={role} />
+                books.map(book => (
+                    <BookCard key={book.book_id} book={book} role={role} />
                 ))
             }
         </div>
