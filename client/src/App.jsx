@@ -12,6 +12,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditBook from './components/EditBook';
 import DeleteBook from './components/DeleteBook';
+import IssuedBook from './components/IssuedBook';
+import StudentDashboard from './components/StudentDashboard';
 
 function App() {
     const [role, setRole] = useState('');
@@ -43,6 +45,8 @@ function App() {
                 <Route path='/addbook' element={<AddBook />} />
                 <Route path="/book/:id" element={<EditBook />} />
                 <Route path="/delete/:id" element={<DeleteBook />} />
+                <Route path='/studentdashboard' element={<StudentDashboard />} />
+                <Route path='/issuedBook' element={<IssuedBook />} />
             </Routes>
         </BrowserRouter>
     );

@@ -52,6 +52,7 @@ const Navbar = ({ role, onSearch }) => {
                 {isStudent && (
                     <>
                         <Link to="/issuedbook" className="navbar-link">My books</Link>
+                        <Link to="/studentdashboard" className="navbar-link">My Dashboard</Link>
                         { isBooksPage && (
                             <div className="navbar-search-form">
                                 <input 

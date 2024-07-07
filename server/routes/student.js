@@ -26,4 +26,24 @@ router.post('/register', verifyAdmin, async (req, res) => {
     }
 })
 
-export {router as studentRouter}
+// Get student dashboard information
+router.get('/studentdashboard', async (req, res) => {
+    try {
+        // Assuming you have a way to identify the logged-in student
+        // e.g., using req.user.id if you're using some form of authentication middleware
+        const studentId = req.user.id; 
+        const student = await Student.findById(studentId);
+        if (!student) {
+            return res.status(404).json({ message: "Student not found" });
+        }
+        return res.json({
+            username: student.username,
+            roll: student.roll,
+            batch: student.batch
+        });
+    } catch (err) {
+        return res.json({ message: "Error fetching student data" });
+    }
+});
+
+export { router as studentRouter };

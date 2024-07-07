@@ -7,6 +7,7 @@ const Login = ({ setRole }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRoleVar] = useState('admin');
+   // const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
     axios.defaults.withCredentials = true;
@@ -41,6 +42,7 @@ const Login = ({ setRole }) => {
                     <input type="password" placeholder="Enter Password"
                         onChange={(e) => setPassword(e.target.value)} />
                 </div>
+                
                 <div className="form-group">
                     <label htmlFor="role">Role:</label>
                     <select name="role" id="role"
@@ -49,6 +51,7 @@ const Login = ({ setRole }) => {
                         <option value='student'>Student</option>
                     </select>
                 </div>
+                
                 <button className='btn-login' onClick={handleSubmit}>Login</button>
             </div>
             <div className="login-image"></div>
