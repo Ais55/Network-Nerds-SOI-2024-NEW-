@@ -1,0 +1,93 @@
+/* StudentDashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.student-dashboard {
+    background: url('books10.webp') no-repeat center center;
+    background-size: contain;
+    animation: changeBg 15s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes changeBg {
+    0% {
+        background: url('Images/bookshelves.png') no-repeat center center;
+        background-size: contain;
+    }
+    33% {
+        background: url('Images/books6.jpg') no-repeat center center;
+        background-size: contain;
+    }
+    66% {
+        background: url('Images/books5.jpg') no-repeat center center;
+        background-size: contain;
+    }
+    100% {
+        background: url('Images/books8.jpg') no-repeat center center;
+        background-size: contain;
+    }
+}
+
+.msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.wlcm {
+    margin-bottom: 20px;
+}
+
+.wlcm img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+    width: 120px; /* Adjust the size as needed */
+    height: 140px; /* Adjust the size as needed */
+}
+
+#heading {
+    color: #333;
+    margin: 0;
+    font-size: 25px;
+}
+
+p {
+    color: #0c0c0c;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

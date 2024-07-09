@@ -1,10 +1,10 @@
-// Books.jsx
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import BookCard from "./BookCard";
 
 const Books = ({ role, searchQuery }) => {
     const [books, setBooks] = useState([]);
+    const [issuedBooks, setIssuedBooks] = useState([]);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -21,11 +21,15 @@ const Books = ({ role, searchQuery }) => {
         fetchBooks();
     }, [searchQuery]); // Added searchQuery as a dependency
 
+    const handleIssueBook = (book) => {
+        setIssuedBooks([...issuedBooks, book]);
+    }
+
     return (
         <div className="book-list">
             {
                 books.map(book => (
-                    <BookCard key={book.book_id} book={book} role={role} />
+                    <BookCard key={book.book_id} book={book} role={role} handleIssueBook={handleIssueBook} />
                 ))
             }
         </div>

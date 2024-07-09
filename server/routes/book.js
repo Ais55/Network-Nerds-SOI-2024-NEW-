@@ -2,42 +2,41 @@ import express from 'express';
 import { Book } from '../models/Book.js';
 import { verifyAdmin } from './auth.js';
 
-
 const router = express.Router();
 
 // Add a new book
 router.post('/add', verifyAdmin, async (req, res) => {
     try {
         const {
-            book_id, 
-            title, 
-            description, 
-            author, 
-            department, 
-            count, 
-            vendor, 
-            vendor_id, 
-            publisher, 
-            publisher_id,
-            image_url,
-            genre
-        } = req.body;
-        
-        const newBook = new Book({
-            book_id, 
-            title, 
-            description, 
+            book_id,
+            title,
+            description,
             author,
-            genre, 
-            department, 
-            count, 
-            vendor, 
-            vendor_id, 
-            publisher, 
+            genre,
+            department,
+            count,
+            vendor,
+            vendor_id,
+            publisher,
+            publisher_id,
+            image_url
+        } = req.body;
+
+        const newBook = new Book({
+            book_id,
+            title,
+            description,
+            author,
+            genre,
+            department,
+            count,
+            vendor,
+            vendor_id,
+            publisher,
             publisher_id,
             image_url
         });
-        
+
         await newBook.save();
         return res.json({ added: true });
     } catch (err) {
@@ -107,4 +106,3 @@ router.delete('/book/:id', async (req, res) => {
 });
 
 export { router as bookRouter };
-

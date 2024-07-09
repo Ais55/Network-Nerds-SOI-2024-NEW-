@@ -1,8 +1,10 @@
 import express from 'express'
 import { Student } from '../models/Student.js';
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 const router = express.Router();
 import { verifyAdmin } from './auth.js';
+import mongoose from 'mongoose';
 
 router.post('/register', verifyAdmin, async (req, res) => {
     try {
@@ -27,12 +29,13 @@ router.post('/register', verifyAdmin, async (req, res) => {
 })
 
 // Get student dashboard information
-router.get('/studentdashboard', async (req, res) => {
+router.get('/students/:id', async (req, res) => {
     try {
-        // Assuming you have a way to identify the logged-in student
-        // e.g., using req.user.id if you're using some form of authentication middleware
-        const studentId = req.user.id; 
-        const student = await Student.findById(studentId);
+        const studentId = req.params.id;
+        console.log(studentId)
+        const decoded = await jwt.verify(studentId, process.env.Student_key)
+        const student = await Student.findById(new mongoose.Types.ObjectId(decoded));
+        console.log(student)
         if (!student) {
             return res.status(404).json({ message: "Student not found" });
         }
@@ -42,8 +45,10 @@ router.get('/studentdashboard', async (req, res) => {
             batch: student.batch
         });
     } catch (err) {
+        console.log(err)
         return res.json({ message: "Error fetching student data" });
     }
 });
+
 
 export { router as studentRouter };

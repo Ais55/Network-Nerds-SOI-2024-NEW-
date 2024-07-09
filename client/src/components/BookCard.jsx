@@ -1,4 +1,3 @@
-//Delete BookCard.jsx
 import React from "react";
 import '../css/BookCard.css'
 import { Link } from 'react-router-dom';
@@ -8,11 +7,10 @@ function trimming(description, maxLength = 20) {
       return description.substring(0, maxLength) + '...';
     }
     return description;
-  }
-  
+}
 
-const BookCard = ({book, role}) => {
-    const{ 
+const BookCard = ({book, role, handleIssueBook}) => {
+    const{
         book_id,
         title,
         description,
@@ -26,7 +24,18 @@ const BookCard = ({book, role}) => {
         publisher,
         publisher_id,
         image_url} = book;
-        console.log("-----------" +book)
+
+    const handleGetIssued = async () => {
+        try {
+            const res = await axios.put(`http://localhost:3001/book/book/${book._id}`, {
+                count: count - 1
+            });
+            handleIssueBook(book);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     return (
         <div className = 'book-card'>
             <img src={image_url} alt={title} className="book-image"/>
@@ -50,13 +59,11 @@ const BookCard = ({book, role}) => {
                 </div>}
                 {role === "student" &&
                 <div className="book-issue">
-                    <Link to={`/issue/${book._id}`} className="action-link">
-                        <button className="action-button edit-button">Get Issued</button>
-                    </Link>
+                    <button onClick={handleGetIssued} className="action-button edit-button">Get Issued</button>
                 </div>}
             
         </div>
     )
 }
 
-export default BookCard
+export default BookCard;

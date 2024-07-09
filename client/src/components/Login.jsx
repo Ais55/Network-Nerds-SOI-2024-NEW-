@@ -21,7 +21,7 @@ const Login = ({ setRole }) => {
                 } 
                 else if (res.data.login && res.data.role === 'student') {
                     setRole('student');
-                    navigate('/');
+                    navigate('/studentdashboard');
                 }
                 console.log(res);
             })

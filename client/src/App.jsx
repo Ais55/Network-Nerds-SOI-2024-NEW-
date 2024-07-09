@@ -14,6 +14,7 @@ import EditBook from './components/EditBook';
 import DeleteBook from './components/DeleteBook';
 import IssuedBook from './components/IssuedBook';
 import StudentDashboard from './components/StudentDashboard';
+import MyBooks from './components/MyBooks';
 
 function App() {
     const [role, setRole] = useState('');
@@ -46,7 +47,8 @@ function App() {
                 <Route path="/book/:id" element={<EditBook />} />
                 <Route path="/delete/:id" element={<DeleteBook />} />
                 <Route path='/studentdashboard' element={<StudentDashboard />} />
-                <Route path='/issuedBook' element={<IssuedBook />} />
+                <Route path='/issuedbook' element={<IssuedBook />} />
+                <Route path='/mybooks' element={<MyBooks />} />
             </Routes>
         </BrowserRouter>
     );
