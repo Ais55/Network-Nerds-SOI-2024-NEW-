@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import  "../css/AddBook.css";
 
-const AddBook = () => {
+const AddBook = ({role}) => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (role!=='' && role!=='admin') {
+            navigate('/error')
+        }
+    }, [role])
+    
+    
     const [book_id, setBook_id] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -16,11 +24,16 @@ const AddBook = () => {
     const [publisher, setPublisher] = useState('');
     const [publisher_id, setPublisher_id] = useState('');
     const [image_url, setImage_url] = useState('');
-    const navigate = useNavigate();
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/book/add', {
+        const invalid = book_id === "" || title === "" || description === "" || author === "" || genre === "" || department === "" || count <=0 || vendor === "" || vendor_id === "" || publisher === "" || publisher_id === "" || image_url === "";
+
+        if (invalid){
+            alert('Invalid Entries')
+            return
+        }
+        axios.post(`${import.meta.env.VITE_API_URL}/book/add`, {
             book_id,
             title,
             description,
@@ -39,13 +52,13 @@ const AddBook = () => {
                 navigate('/books');
             }
             else {
-                console.log(res);
+                alert(res.data.message);
             }
         })
         .catch(err => console.log(err));
     };
 
-    return (
+    return (role==='admin' &&
         <div className="book-form-container">
             <div className="book-form">
                 <h2>Add Book</h2>

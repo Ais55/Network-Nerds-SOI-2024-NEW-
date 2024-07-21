@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/Dashboard.css'; // Import CSS file for styling
 
-const Dashboard = () => {
+const Dashboard = ({role}) => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (role!=='' && role!=='admin') {
+            navigate('/error')
+        }
+    }, [role])
     const [students, setStudents] = useState(0);
     const [admin, setAdmin] = useState(0);
     const [books, setBooks] = useState(0);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/dashboard')
+        if (role!=='admin') {
+            navigate('/error')
+            return
+        }
+        axios.get(`${import.meta.env.VITE_API_URL}/dashboard`)
             .then(res => {
                 if (res.data.ok) {
                     setStudents(res.data.student);
@@ -20,7 +30,7 @@ const Dashboard = () => {
             .catch(err => console.log(err));
     }, []);
 
-    return (
+    return (role==='admin' &&
         <div className="dashboard">
             <div className="db-content">
                 <h1 className="db-text">Welcome!</h1>

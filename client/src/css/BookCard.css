@@ -9,14 +9,15 @@
 .book-card {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center align items */
+    align-items: center; 
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 300px; /* Adjusted width */
+    width: 300px;
     background-color: #fff;
     transition: transform 0.2s, box-shadow 0.2s;
+    padding: 10px;
 }
 
 .book-card:hover {
@@ -89,3 +90,19 @@
     background-color: #c82333;
     transform: translateY(-2px);
 }
+.button-container {
+    display: flex;
+    justify-content: center ;
+    width: 100%;
+
+}
+.request-sent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    align-self: stretch;
+    padding: 10px;
+}
+
+

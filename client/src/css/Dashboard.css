@@ -7,6 +7,8 @@ body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #f0f8ff; /* Light blue background */
+   
+   
 }
 
 .dashboard {
@@ -16,12 +18,14 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    background: 
+   /* background: 
         url('Images/books10.webp') no-repeat right center, /* Right side background image */
-        url('Images/books10.webp') no-repeat left center, /* Left side background image */
-        #f0f8ff; /* Background color */
-    background-size: 30%; /* Slightly larger background image */
-    background-blend-mode: multiply; /* Blend the images with background color */
+       /* url('Images/books10.webp') no-repeat left center, /* Left side background image */
+       /* #f0f8ff; /* Background color */
+  /*  background-size: 30%; /* Slightly larger background image */
+   /* background-blend-mode: multiply; /* Blend the images with background color */
+   background-size: cover;
+   animation: changeBg 10s infinite;
 }
 
 .db-content {
@@ -33,6 +37,7 @@ body {
     max-width: 500px; /* Increased max-width for wider card */
     margin: 20px; /* Adjust margin as needed */
     height: auto; /* Set height to auto to adjust based on content */
+
 }
 
 .db-text {
@@ -49,7 +54,7 @@ body {
     color: #666;
 }
 
-.db-image {
+/*.db-image {
     margin-top: 20px;
     width: 100px;
     height: 100px;
@@ -57,16 +62,9 @@ body {
     background-size: cover;
     border-radius: 50%;
     animation: rotate 20s infinite linear;
-}
+}*/
 
-.db1-image {
-    margin-top: 40px; /* Adjust margin as needed */
-    width: 200px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
-    background: url('Images/books5.jpg') no-repeat center center;
-    background-size: cover;
-    border-radius: 30px;
-}
+
 
 /* Animations */
 @keyframes fadeIn {
@@ -82,4 +80,22 @@ body {
 @keyframes rotateReverse {
     from { transform: rotate(360deg); }
     to { transform: rotate(0deg); }
+}
+@keyframes changeBg {
+    0% {
+        background: url('Images/books7.png') no-repeat center center;
+        background-size: cover;
+    }
+    33% {
+        background: url('Images/books4.jpg') no-repeat center center;
+        background-size: cover;
+    }
+    66% {
+        background: url('Images/books5.jpg') no-repeat center center;
+        background-size: cover;
+    }
+    100% {
+        background: url('Images/books6.jpg') no-repeat center center;
+        background-size: cover;
+    }
 }

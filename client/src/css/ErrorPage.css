@@ -1,0 +1,91 @@
+/* Error Page Styles */
+.error-hero {
+    display: flex;
+    background-color: #ffffff;
+    color: #333333;
+    height: 92vh;
+    padding-inline: 30px;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.error-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.error-text {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    word-spacing: 2px;
+    animation: slideInLeft 1.5s ease-in-out;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.error-description {
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin-bottom: 20px;
+    animation: slideInRight 1.5s ease-in-out;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.error-link {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    animation: fadeIn 2s ease-in-out;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: color 0.3s;
+}
+
+.error-link:hover {
+    color: #0056b3;
+}
+
+.error-image {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.error-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('Images/error.webp') center;
+    background-size: cover;
+    opacity: 0.9;
+    z-index: -1;
+    filter: brightness(110%);
+    animation: fadeInImage 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes fadeInImage {
+    0% { opacity: 0; }
+    100% { opacity: 0.9; }
+}

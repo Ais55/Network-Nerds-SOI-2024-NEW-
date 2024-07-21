@@ -13,7 +13,7 @@ const Navbar = ({ role, onSearch }) => {
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        console.log("Search term submitted: ", searchTerm);
+        // console.log("Search term submitted: ", searchTerm);
         // Additional search handling logic if needed
     };
 
@@ -28,12 +28,17 @@ const Navbar = ({ role, onSearch }) => {
                 <Link to="/" className='navbar-brand'>My Library</Link>
             </div>
             <div className='navbar-right'>
-                <Link to="/books" className='navbar-link'>Books</Link>
+               {(isAdmin || isStudent) && <Link to="/books" className='navbar-link'>Books</Link>}
                 
                 {isAdmin &&  (
                     <>
+
                         <Link to="/addbook" className="navbar-link">Add Book</Link>
+                        <Link to="/students" className="navbar-link">Students</Link>
+
                         <Link to="/addstudent" className="navbar-link">Add Student</Link>
+                        <Link to="/adminbookrequests" className= "navbar-link">Requests</Link>
+                        <Link to="/adminissuedbooks" className= "navbar-link">Issued Books</Link>
                         <Link to="/dashboard" className="navbar-link">Dashboard</Link>
                         { isBooksPage && (
                             <div className="navbar-search-form">
@@ -51,7 +56,7 @@ const Navbar = ({ role, onSearch }) => {
                 )}
                 {isStudent && (
                     <>
-                        <Link to="/mybooks" className="navbar-link">My books</Link>
+                        <Link to="/bookhistory" className="navbar-link">My books</Link>
                         <Link to="/studentdashboard" className="navbar-link">My Dashboard</Link>
                         { isBooksPage && (
                             <div className="navbar-search-form">
@@ -67,7 +72,7 @@ const Navbar = ({ role, onSearch }) => {
                         )}
                     </>
                 )}
-                {role === "" ? 
+                {role === "guest" ? 
                     <Link to="/login" className='navbar-link'>Login</Link>
                  : 
                     <Link to="/logout" className='navbar-link'>Logout</Link>

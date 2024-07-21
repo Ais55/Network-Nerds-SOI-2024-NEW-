@@ -12,27 +12,30 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditBook from './components/EditBook';
 import DeleteBook from './components/DeleteBook';
-import IssuedBook from './components/IssuedBook';
+import BookHistory from './components/BookHistory';
 import StudentDashboard from './components/StudentDashboard';
-import MyBooks from './components/MyBooks';
-
+import AdminIssuedBooks from './components/AdminIssuedBooks';
+import AdminBookRequests from './components/AdminBookRequests';
+import ErrorPage from './components/ErrorPage'
+import Students from './components/Students'
+import EditStudent from './components/EditStudent';
 function App() {
     const [role, setRole] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get('http://localhost:3001/auth/verify')
+        axios.get(`${import.meta.env.VITE_API_URL}/auth/verify`)
             .then(res => {
                 if (res.data.login) {
                     setRole(res.data.role);
                 } else {
-                    setRole('');
+                    setRole('guest');
                 }
-                console.log(res);
+                // console.log(res);
             }).catch(err => console.log(err));
     }, []);
-
+    // console.log(role)
     return (
         <BrowserRouter>
             <Navbar role={role} onSearch={setSearchQuery} />
@@ -40,15 +43,19 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/books' element={<Books role={role} searchQuery={searchQuery} />} />
                 <Route path='/login' element={<Login setRole={setRole} />} />
-                <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/addstudent' element={<AddStudent />} />
+                <Route path='/dashboard' element={<Dashboard role={role}/>} />
+                <Route path='/addstudent' element={<AddStudent role={role}/>} />
                 <Route path='/logout' element={<Logout setRole={setRole} />} />
-                <Route path='/addbook' element={<AddBook />} />
-                <Route path="/book/:id" element={<EditBook />} />
-                <Route path="/delete/:id" element={<DeleteBook />} />
-                <Route path='/studentdashboard' element={<StudentDashboard />} />
-                <Route path='/issuedbook' element={<IssuedBook />} />
-                <Route path='/mybooks' element={<MyBooks />} />
+                <Route path='/addbook' element={<AddBook role={role}/>} />
+                <Route path="/book/:id" element={<EditBook role={role}/>} />
+                <Route path="/delete/:id" element={<DeleteBook role={role}/>} />
+                <Route path='/studentdashboard' element={<StudentDashboard role={role}/>} />
+                <Route path='/adminbookrequests' element={<AdminBookRequests role={role}/>} />
+                <Route path='/bookhistory' element={<BookHistory role={role} />} />
+                <Route path='/adminissuedbooks' element={<AdminIssuedBooks role={role}/>} />
+                <Route path='/students' element={<Students role={role}/>} />
+                <Route path='/student/:id' element={<EditStudent role={role}/>} />
+                <Route path="*" element={<ErrorPage />} />
             </Routes>
         </BrowserRouter>
     );

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import "../css/AddBook.css";
 
-const EditBook = () => {
+const EditBook = ({role}) => {
     const [book_id, setBook_id] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -18,9 +18,13 @@ const EditBook = () => {
     const [image_url, setImage_url] = useState('');
     const navigate = useNavigate();
     const { id } = useParams();
-
     useEffect(() => {
-        axios.get(`http://localhost:3001/book/book/${id}`)
+        if (role!=='' && role!=='admin') {
+            navigate('/error')
+        }
+    }, [role])
+    useEffect(() => {
+        axios.get(`${import.meta.env.VITE_API_URL}/book/book/${id}`)
             .then(res => {
                 console.log(res);
                 setBook_id(res.data.book_id);
@@ -41,7 +45,13 @@ const EditBook = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3001/book/book/${id}`, {
+        const invalid = book_id === "" || title === "" || description === "" || author === "" || genre === "" || department === "" || count <=0 || vendor === "" || vendor_id === "" || publisher === "" || publisher_id === "" || image_url === "";
+
+        if (invalid){
+            alert('Invalid Entries')
+            return
+        }
+        axios.put(`${import.meta.env.VITE_API_URL}/book/book/${id}`, {
             book_id,
             title,
             description,
@@ -65,7 +75,7 @@ const EditBook = () => {
             .catch(err => console.log(err));
     };
 
-    return (
+    return (role==='admin' &&
         <div className="book-form-container">
             <div className="book-form">
                 <h2>Edit Book</h2>

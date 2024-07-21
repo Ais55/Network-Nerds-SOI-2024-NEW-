@@ -1,0 +1,94 @@
+.admin-students-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.admin-students-list h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.admin-students {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-students li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    max-width: 800px;
+}
+
+.admin-students li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.admin-students .student-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-students .text-details {
+    flex: 1 1 auto;
+}
+
+.admin-students p {
+    margin: 8px 0;
+    font-size: 1em;
+    color: #0f0101;
+}
+
+.admin-students .buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.admin-students .edit-button,
+.admin-students .delete-button {
+    padding: 5px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.admin-students .edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.admin-students .edit-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.admin-students .delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.admin-students .delete-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}

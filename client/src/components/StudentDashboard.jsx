@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import '../css/StudentDashboard.css'; // Ensure you have this CSS file
+import {useNavigate} from 'react-router-dom'
 
-const StudentDashboard = () => {
+const StudentDashboard = ({role}) => {
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
+  useEffect(() => {
+      if (role!=='' && role!=='student') {
+          navigate('/error')
+      }
+  }, [role])
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
-        const studentId = Cookies.get('token');
-        console.log('Fetched studentId from cookies:', studentId);
-        if (!studentId) {
-          throw new Error("Student ID not found in cookies.");
-        }
-        const response = await axios.get(`http://localhost:3001/student/students/${studentId}`);
+        // const studentId = Cookies.get('token');
+        // // console.log('Fetched studentId from cookies:', studentId);
+        // if (!studentId) {
+        //   throw new Error("Student ID not found in cookies.");
+        // }
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/student/students/`);
         setStudent(response.data);
       } catch (error) {
         console.error('Error fetching student data:', error);
@@ -37,7 +43,7 @@ const StudentDashboard = () => {
     return <div>Error: {error}</div>;
   }
 
-  return (
+  return (role==='student' &&
     <div className="student-dashboard">
       <div className='msg'>
         <div className="box">

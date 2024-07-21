@@ -7,13 +7,14 @@ const Login = ({ setRole }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRoleVar] = useState('admin');
+    const [email, setEmail] = useState('')
    // const [email, setEmail] = useState('');
     const navigate = useNavigate();
 
     axios.defaults.withCredentials = true;
 
     const handleSubmit = () => {
-        axios.post('http://localhost:3001/auth/login', { username, password, role })
+        axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, { username, password, email, role })
             .then(res => {
                 if (res.data.login && res.data.role === 'admin') {
                     setRole('admin');
@@ -37,20 +38,25 @@ const Login = ({ setRole }) => {
                     <input type="text" placeholder="Enter Username"
                         onChange={(e) => setUsername(e.target.value)} />
                 </div>
+                {<div className="form-group">
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" placeholder="Enter Email"
+                        onChange={(e) => setEmail(e.target.value)} />
+                </div> }
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>
                     <input type="password" placeholder="Enter Password"
                         onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label htmlFor="role">Role:</label>
                     <select name="role" id="role"
                         onChange={(e) => setRoleVar(e.target.value)}>
                         <option value='admin'>Admin</option>
                         <option value='student'>Student</option>
                     </select>
-                </div>
+                </div> */}
                 
                 <button className='btn-login' onClick={handleSubmit}>Login</button>
             </div>
